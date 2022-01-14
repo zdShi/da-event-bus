@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>App Component</h1>
+    <div>
+      <Child01/>
+      <Child02/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Child01 from "@/components/Child01";
+import Child02 from "@/components/Child02";
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Child01,
+    Child02
   }
 }
 </script>
@@ -24,5 +30,16 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  border: 1px solid silver;
+}
+#app>div{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.box{
+  width: 400px;
+  height: 100px;
+  border: 2px solid red;
 }
 </style>

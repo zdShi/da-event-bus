@@ -1,24 +1,19 @@
 # da-event-bus
 
-## Project setup
+###克隆下来
 ```
-yarn install
+yarn
 ```
-
-### Compiles and hot-reloads for development
+或者
+```
+npm init
+```
+初始化一下,直接
 ```
 yarn serve
 ```
-
-### Compiles and minifies for production
 ```
-yarn build
+npm serve
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+都可以
+有些简陋, 但很容易懂, 直接在vue中应用

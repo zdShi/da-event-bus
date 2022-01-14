@@ -6,13 +6,11 @@
  * 2. 需要定义的方法
  *  - 事件回调, 事件的绑定, 事件的订阅, 事件的分发
  */
-
 class _EventBus {
   constructor() {
     this._events = new Map(); // 储存事件/回调键值对
   }
 }
-
 // 发布
 _EventBus.prototype.myPub = function (type, ...args) {
   console.log("发布消息!" + args);
@@ -24,7 +22,7 @@ _EventBus.prototype.myPub = function (type, ...args) {
       if (args.length > 0) {
         subEvents[i].apply(this, args);
       } else {
-        subEvents[i].call(this);
+        subEvents[i].call(this, ...args);
       }
     }
   } else {
@@ -47,12 +45,12 @@ _EventBus.prototype.mySub = function (type, subEvent) {
   //将传入的函数返回, 用作取消订阅
   return subEvent;
 };
-
 //移除订阅
 _EventBus.prototype.removeSub = function (type, subEvent) {
   //获取对应消息的所有订阅内容
   const subEvents = this._events.get(type);
   if (subEvents) {
+    //说实话这个判断, 只是为了稳一下, 如果没有订阅, 其实也没人去搞着这个
     // 遍历, 找出对应的subEvent 删除
     for (let i = 0, len = subEvents.length; i < len; i++) {
       if (subEvents[i] === subEvent) {
@@ -60,8 +58,6 @@ _EventBus.prototype.removeSub = function (type, subEvent) {
         return;
       }
     }
-  } else {
-    return;
   }
 };
 

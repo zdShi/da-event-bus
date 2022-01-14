@@ -16,7 +16,6 @@ export default {
   },
   methods:{
     send(){
-      console.log(this.msg)
       this.$myEvents.myPub("btnMsg",this.msg)
     }
   }

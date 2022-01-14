@@ -10,13 +10,17 @@ export default {
   name: 'Child02',
   data(){
     return{
-      receive:""
+      receive: "",
+      subToken: null
     }
   },
   mounted() {
-    this.$myEvents.mySub("btnMsg", msg => {
+    this.subToken = this.$myEvents.mySub("btnMsg", msg => {
       this.receive = msg
     })
+  },
+  beforeDestroy() {
+    this.$myEvents.removeSub("btnMsg", this.subToken)
   }
 }
 </script>
